@@ -17,8 +17,14 @@ function jcd() {
 	do
 		if [ -e $target ]
 		then
-			cd $container
-			return $?
+			if [ -d $target ]
+			then
+				cd $target
+				return $?
+			else
+				cd $container
+				return $?
+			fi
 		fi
 
 		target=../$target
